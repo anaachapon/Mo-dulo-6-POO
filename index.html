@@ -10,13 +10,14 @@
 <body>
     <div>
     <h1>Parquímetro</h1>
-    <h2 id="valor"> Valor Depositado: R$ 0,00</h2>
+    <h2 id="valor"> Valor Depositado:</h2>
+<form>
+    <input type="text" id="valorPago" placeholder="Insira aqui o valor">
+    <button type="submit"> Pagar </button>
+</form>
 
-    <input type="number" id="valorDeposito" placeholder="Insira aqui o valor">
-    <button onclick="parquimetro.calcular()"> Pagar</button>
-
-    <h3>Tempo Disponível:  </h3>
-    <h3>Troco:  </h3>
+    <h3 id="tempoD"> </h3>
+    <h3 id="troco">  </h3>
     <p id="insuficiente"></p>
     </div>
 
