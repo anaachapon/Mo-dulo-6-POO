@@ -3,13 +3,12 @@ class Parquimetro {
         this.valorPago = valorPago;
         this.tempo = 0;
         this.valorMin = 1.0;
-        this.valorMax = 3.0;
         this.troco = 0;
         this.error = false;
 
     }
     calcular() {
-        if (this.valorPago < this.valorMin || this.valorPago > this.valorMax || Number.isNaN(this.valorPago)) {
+        if (this.valorPago < this.valorMin || Number.isNaN(this.valorPago)) {
             this.error = true;
 
         } else if (this.valorPago >= this.valorMin && this.valorPago < 1.75) {
@@ -17,15 +16,16 @@ class Parquimetro {
             this.troco = this.calcularTroco(this.valorMin)
               
 
-        } else if (this.valorPago >= 1.75 && this.valorPago < this.valorMax) {
+        } else if (this.valorPago >= 1.75 && this.valorPago < 3.0) {
             this.tempo = 60;
             this.troco = this.calcularTroco(1.75)
            
         }
 
-        else if (this.valorPago = this.valorMax) {
+        else if (this.valorPago >= 3.0 ) {
             this.tempo = 120;
-        
+            this.troco = this.calcularTroco(3.00)  
+            document.getElementById("max").textContent = "O tempo máximo é 120min ";      
         }
 
         return this;
@@ -48,34 +48,16 @@ document.addEventListener('submit', function (e) {
     let troco = parquimetro.calcular();
 
     if (parquimetro.error) {
-        document.getElementById("insuficiente").textContent = "Insira um valor entre 1,00 e 3,00";
+        document.getElementById("insuficiente").textContent = "O valor míninimo é 1,00";
         return;
     }
 
-    else if(this.valorPago >= this.valorMin && this.valorPago < 1.75){
-        document.getElementById("tempoD").textContent = "Tempo: 30 minutos";
+   
+   document.getElementById("tempoD").textContent = "Tempo: " + parquimetro.tempo;
+   document.getElementById("troco").textContent = "Troco: " + parquimetro.troco;
+   
 
-    }
-
-    else if(this.valorPago >= 1.75 && this.valorPago < this.valorMax){
-        document.getElementById("tempoD").textContent = "Tempo: 60 minutos";
-
-    }
-
-    else if(this.valorPago = this.valorMax){
-        document.getElementById("tempoD").textContent = "Tempo: 120 minutos";
-       }
-
-    
-
-
-
-    
-
-console.log(parquimetro.tempo)
-console.log(parquimetro.troco)
-
-
+ 
 
 });
 
